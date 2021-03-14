@@ -37,15 +37,5 @@
         reduce((a, f) => f(a), args);
         };
 
-        const add = (a,b)=> a+b
-
-        const products = [
-        { name: "1", price: 1 },
-        { name: "2", price: 2 },
-        { name: "3", price: 3 },
-        { name: "4", price: 4 },
-        { name: "5", price: 5 },
-        ];
-        const mult = curry((a, b) => a * b);
 
     
