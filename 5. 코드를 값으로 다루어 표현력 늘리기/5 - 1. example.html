@@ -5,33 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
+
     <script>
     const reduce = (f, acc, iter) => {
-    if (!iter) {
-        iter = acc[Symbol.iterator]();
-        acc = iter.next().value;
+    
+    if(!iter){
+        iter = acc[Symbol.iterator]()
+        acc= iter.next().value
     }
 
-    for (const a of iter) {
-        acc = f(acc, a);
+    for(const a of iter) {
+        acc = f(acc,a)
     }
-    return acc;
-    };
+    return acc
+    }
 
-    const go = (a, ...f) => {
-    return reduce(f, a);
-    };
+    const go = (...args) => {
+        console.log('args', args)
+        console.log('args', ...args)
+        return reduce((a,f)=> f(a), args)
+    }
 
     go(
-    10,
-    (a) => a + 1,
-    (a) => a + 10,
-    (a) => a + 100,
+    0,
+    a => a+1,
+    a=> a+10,
+    a=>a+100,
     console.log
-    ); ///111
-
+    ) ///111
     </script>
+</head>
+<body>
+    
 </body>
 </html>

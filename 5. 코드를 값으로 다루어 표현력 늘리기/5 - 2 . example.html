@@ -33,6 +33,10 @@
     ) ///111
 
     const pipe = (f, ...fs) => (...args) => {
+        console.log('f', f)
+        console.log('f', fs)
+        console.log('f', args)
+        
         go(f(...args), ...fs)
     }
 
