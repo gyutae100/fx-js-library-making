@@ -1,25 +1,26 @@
 
-      
+
+        const isIterable = (a) => a && a[Symbol.iterator];
 
         const curry = (f) => (a, ..._) => 
         _.length ? f(a, ..._) : (..._) => f(a, ..._);
 
-        const filter = curry((f, iter) => {
-            let res = [];
-            for (const p of iter) {
-                if (f(p)) res.push(p);
-            }
-            return res
-        });
+        // const filter = curry((f, iter) => {
+        //     let res = [];
+        //     for (const p of iter) {
+        //         if (f(p)) res.push(p);
+        //     }
+        //     return res
+        // });
 
-        const map = curry((f, iter) => {
-            let res = [];
-            for (const a of iter) {
-                res.push(f(a));
-            }
+        // const map = curry((f, iter) => {
+        //     let res = [];
+        //     for (const a of iter) {
+        //         res.push(f(a));
+        //     }
 
-            return res;
-        });
+        //     return res;
+        // });
 
 
         const reduce = curry((f, acc, iter) => {
@@ -38,7 +39,7 @@
         const go = (...args) => reduce((a, f) => f(a), args) 
 
         const pipe = (f, ...fs) => (...args) => {
-            go(f(...args), ...fs);
+            return go(f(...args), ...fs);
           };
 
         const range = (l) => {
@@ -62,6 +63,10 @@
 
             return res;
         });
+        
+
+        const takeAll = take(Infinity)
+
 
         const L={}
         L.range = function* (l) {
@@ -83,6 +88,39 @@
             }
         });
 
+
+        const join = curry((sep = ",", iter) => {
+            return reduce((a, b) => `${a}${sep}${b}`, iter);
+        });
+
+
+        L.entries = function* (obj) {
+            for (const k in obj) yield [k, obj[k]];
+          };
+    
+
+        const map = curry(pipe(L.map, take(Infinity)));
+        const filter = curry(pipe(L.filter, take(Infinity)));
+
+
+        L.flatten = function* (iter) {
+            for (const a of iter) {
+              if (isIterable(a)) {
+                yield* a;
+              } else {
+                yield a;
+              }
+            }
+          };
+
+
+          L.deepFlat = function* f(iter) {
+            for (const a of iter) {
+              if (isIterable(a)) yield* f(a);
+              else yield a;
+            }
+          };
+          
 
 
     
