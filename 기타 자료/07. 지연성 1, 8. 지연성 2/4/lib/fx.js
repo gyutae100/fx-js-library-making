@@ -1,4 +1,4 @@
-const log = console.log;
+const console.log = console.log;
 
 const curry = f =>
   (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);

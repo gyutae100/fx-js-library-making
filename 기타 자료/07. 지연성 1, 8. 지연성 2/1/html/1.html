@@ -15,8 +15,8 @@
   };
 
   var list = range(4);
-  log(list);
-  log(reduce(add, list));
+  console.log(list);
+  console.log(reduce(add, list));
 </script>
 
 ## 느긋한 L.range
@@ -31,8 +31,8 @@
   };
 
   var list = L.range(4);
-  log(list);
-  log(reduce(add, list));
+  console.log(list);
+  console.log(reduce(add, list));
 </script>
 
 <script>
@@ -63,7 +63,7 @@
     range(10000),
     take(5),
     reduce(add),
-    log);
+    console.log);
   console.timeEnd('');
 
   console.time('');
@@ -71,7 +71,7 @@
     L.range(10000),
     take(5),
     reduce(add),
-    log);
+    console.log);
   console.timeEnd('');
 </script>
 

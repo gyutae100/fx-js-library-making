@@ -4,8 +4,8 @@
 
 <script>
   Promise.resolve(Promise.resolve(1)).then(function (a) {
-    log(a);
+    console.log(a);
   });
 
-  new Promise(resolve => resolve(new Promise(resolve => resolve(1)))).then(log);
+  new Promise(resolve => resolve(new Promise(resolve => resolve(1)))).then(console.log);
 </script>

@@ -3,7 +3,7 @@
 ## L.flatten
 
 <script>
-  log([...[1, 2], 3, 4, ...[5, 6], ...[7, 8, 9]]);
+  console.log([...[1, 2], 3, 4, ...[5, 6], ...[7, 8, 9]]);
 
   const isIterable = a => a && a[Symbol.iterator];
 
@@ -15,18 +15,18 @@
   };
 
   var it = L.flatten([[1, 2], 3, 4, [5, 6], [7, 8, 9]]);
-  log(it.next());
-  log(it.next());
-  log(it.next());
-  log(it.next());
-  log(take(6, L.flatten([[1, 2], 3, 4, [5, 6], [7, 8, 9]])));
+  console.log(it.next());
+  console.log(it.next());
+  console.log(it.next());
+  console.log(it.next());
+  console.log(take(6, L.flatten([[1, 2], 3, 4, [5, 6], [7, 8, 9]])));
 
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
   const flatten = pipe(L.flatten, takeAll);
-  log(flatten([[1, 2], 3, 4, [5, 6], [7, 8, 9]]));
+  console.log(flatten([[1, 2], 3, 4, [5, 6], [7, 8, 9]]));
 
   console.clear();
 </script>
@@ -64,42 +64,42 @@
       else yield a;
     }
   };
-  log([...L.deepFlat([1, [2, [3, 4], [[5]]]])]);
+  console.log([...L.deepFlat([1, [2, [3, 4], [[5]]]])]);
   // [1, 2, 3, 4, 5];
 </script>
 
 ## L.flatMap
 
 <script>
-  // log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a));
-  // log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a.map(a => a * a)));
-  // log(flatten([[1, 2], [3, 4], [5, 6, 7]].map(a => a.map(a => a * a))));
-  // log(flatten([[1, 2], [3, 4], [5, 6, 7]].map(a => a.map(a => a * a))));
+  // console.log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a));
+  // console.log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a.map(a => a * a)));
+  // console.log(flatten([[1, 2], [3, 4], [5, 6, 7]].map(a => a.map(a => a * a))));
+  // console.log(flatten([[1, 2], [3, 4], [5, 6, 7]].map(a => a.map(a => a * a))));
 
   L.flatMap = curry(pipe(L.map, L.flatten));
   const flatMap = curry(pipe(L.map, flatten));
 
   // var it = L.flatMap(map(a => a * a), [[1, 2], [3, 4], [5, 6, 7]]);
   var it = L.flatMap(a => a, [[1, 2], [3, 4], [5, 6, 7]]);
-  log([...it]);
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  // log(it.next());
-  log(flatMap(a => a, [[1, 2], [3, 4], [5, 6, 7]]));
+  console.log([...it]);
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  // console.log(it.next());
+  console.log(flatMap(a => a, [[1, 2], [3, 4], [5, 6, 7]]));
 
-  log(flatMap(L.range, map(a => a + 1, [1, 2, 3])));
+  console.log(flatMap(L.range, map(a => a + 1, [1, 2, 3])));
 
   var it = L.flatMap(L.range, map(a => a + 1, [1, 2, 3]));
-  log(it.next());
-  log(it.next());
-  log(it.next());
-  log(it.next());
+  console.log(it.next());
+  console.log(it.next());
+  console.log(it.next());
+  console.log(it.next());
 
-  log(take(3, L.flatMap(L.range, map(a => a + 1, [1, 2, 3]))));
+  console.log(take(3, L.flatMap(L.range, map(a => a + 1, [1, 2, 3]))));
   console.clear();
 </script>
 
@@ -120,7 +120,7 @@
     L.map(a => a * a),
     take(4),
     reduce(add),
-    log);
+    console.log);
 </script>
 
 
@@ -159,6 +159,6 @@
     L.map(u => u.age),
     take(4),
     reduce(add),
-    log);
+    console.log);
 </script>
 

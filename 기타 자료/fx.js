@@ -1,4 +1,4 @@
-export const log = console.log;
+export const console.log = console.log;
 
 export const curry = f =>
   (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);

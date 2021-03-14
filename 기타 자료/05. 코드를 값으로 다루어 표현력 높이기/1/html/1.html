@@ -11,7 +11,7 @@
 
   const add = (a, b) => a + b;
 
-  log(
+  console.log(
     reduce(
       add,
       map(p => p.price,
@@ -31,7 +31,7 @@
     add(0, 1),
     a => a + 10,
     a => a + 100,
-    log);
+    console.log);
   // 111
 
   const f = pipe(
@@ -39,7 +39,7 @@
     a => a + 10,
     a => a + 100);
 
-  log(f(0, 1));
+  console.log(f(0, 1));
 
   console.clear();
 
@@ -47,7 +47,7 @@
 
 <script>
 
-  log(
+  console.log(
     reduce(
       add,
       map(p => p.price,
@@ -58,14 +58,14 @@
     products => filter(p => p.price < 20000, products),
     products => map(p => p.price, products),
     prices => reduce(add, prices),
-    log);
+    console.log);
 
   go(
     products,
     filter(p => p.price < 20000),
     map(p => p.price),
     reduce(add),
-    log);
+    console.log);
 
 </script>
 
@@ -74,12 +74,12 @@
 <script>
 
   const mult = curry((a, b) => a * b);
-  log(mult(3)(2));
+  console.log(mult(3)(2));
 
   const mult3 = mult(3);
-  log(mult3(10));
-  log(mult3(5));
-  log(mult3(3));
+  console.log(mult3(10));
+  console.log(mult3(5));
+  console.log(mult3(3));
   console.clear();
 </script>
 
@@ -97,10 +97,10 @@
   go(
     products,
     base_total_price(p => p.price < 20000),
-    log);
+    console.log);
 
   go(
     products,
     base_total_price(p => p.price >= 20000),
-    log);
+    console.log);
 </script>

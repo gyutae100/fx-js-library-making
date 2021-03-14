@@ -12,12 +12,12 @@
   var a = add10(5, res => {
     add10(res, res => {
       add10(res, res => {
-        // log(res);
+        // console.log(res);
       });
     });
   });
 
-  // log(a);
+  // console.log(a);
 
   function add20(a) {
     return new Promise(resolve => setTimeout(() => resolve(a + 20), 100));
@@ -26,9 +26,9 @@
   var b = add20(5)
     .then(add20)
     .then(add20)
-  // .then(log);
+  // .then(console.log);
 
-  // log(b);
+  // console.log(b);
 </script>
 
 ## 일급 활용
@@ -41,10 +41,10 @@
   const add5 = a => a + 5;
 
   const n1 = 10;
-  // log(go1(go1(n1, add5), log));
+  // console.log(go1(go1(n1, add5), console.log));
 
   const n2 = delay100(10);
-  // log(go1(go1(n2, add5), log));
+  // console.log(go1(go1(n2, add5), console.log));
 </script>
 
 ## Composition
@@ -56,16 +56,16 @@
   const g = a => a + 1;
   const f = a => a * a;
 
-  // log(f(g(1)));
-  // log(f(g()));
+  // console.log(f(g(1)));
+  // console.log(f(g()));
 
-  Array.of(1).map(g).map(f)/*.forEach(r => log(r))*/;
-  [].map(g).map(f)/*.forEach(r => log(r))*/;
+  Array.of(1).map(g).map(f)/*.forEach(r => console.log(r))*/;
+  [].map(g).map(f)/*.forEach(r => console.log(r))*/;
 
-  Promise.resolve(2).then(g).then(f)/*.then(r => log(r))*/;
+  Promise.resolve(2).then(g).then(f)/*.then(r => console.log(r))*/;
   new Promise(resolve =>
     setTimeout(() => resolve(2), 100)
-  ).then(g).then(f)/*.then(r => log(r))*/;
+  ).then(g).then(f)/*.then(r => console.log(r))*/;
 </script>
 
 ## Kleisli Composition
@@ -91,12 +91,12 @@
 
   const fg = id => Promise.resolve(id).then(g).then(f).catch(a => a);
 
-  fg(2).then(log);
+  fg(2).then(console.log);
 
   setTimeout(function () {
     users.pop();
     users.pop();
-    fg(2).then(log);
+    fg(2).then(console.log);
   }, 10);
 </script>
 

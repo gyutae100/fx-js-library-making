@@ -1,4 +1,4 @@
-const log = console.log;
+const console.log = console.log;
 
 const map = (f, iter) => {
   let res = [];

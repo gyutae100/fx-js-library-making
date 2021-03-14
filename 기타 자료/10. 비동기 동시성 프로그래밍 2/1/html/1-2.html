@@ -34,15 +34,15 @@
       L.map(a => delay1000(a * a)),
       // C.take(2),
       C.reduce(add),
-      /!*log,
+      /!*console.log,
       _ => console.timeEnd('')*!/);*/
 </script>
 
 ## 즉시 병렬적으로 평가하기 - C.map, C.filter
 
 <script>
-  // C.map(a => delay1000(a * a), [1, 2, 3, 4]).then(log);
-  // C.filter(a => delay1000(a % 2), [1, 2, 3, 4]).then(log);
+  // C.map(a => delay1000(a * a), [1, 2, 3, 4]).then(console.log);
+  // C.filter(a => delay1000(a % 2), [1, 2, 3, 4]).then(console.log);
 </script>
 
 ## 즉시, 지연, Promise, 병렬적 조합하기
@@ -61,6 +61,6 @@
     L.map(a => delay500(a + 1, 'map 3')),
     C.take(2),
     reduce(add),
-    log,
+    console.log,
     _ => console.timeEnd(''));
 </script>

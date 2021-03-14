@@ -1,9 +1,9 @@
-## yield*
+## yield\*
 
 ```javascript
 L.flatten = function* (iter) {
   for (const a of iter) {
-    if (isIterable(a)) for (const b of a) yield b
+    if (isIterable(a)) for (const b of a) yield b;
     else yield a;
   }
 };
@@ -31,6 +31,6 @@ L.deepFlat = function* f(iter) {
     else yield a;
   }
 };
-log([...L.deepFlat([1, [2, [3, 4], [[5]]]])]);
+console.log([...L.deepFlat([1, [2, [3, 4], [[5]]]])]);
 // [1, 2, 3, 4, 5];
 ```
